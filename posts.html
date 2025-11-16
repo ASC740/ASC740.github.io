@@ -13,6 +13,7 @@ pre { white-space: pre-wrap; word-wrap: break-word; }
 </style>
 </head>
 <body>
+<a href="index.html">返回首页 / Home</a>
 <h1>随笔列表 / Posts</h1>
 <div id="post-list">Loading posts...</div>
 <script>
@@ -30,22 +31,16 @@ async function loadPosts() {
         .filter(name => name.endsWith('.md') || name.endsWith('.txt') || name.endsWith('.html'));
     const container = document.getElementById('post-list');
     container.innerHTML = '';
-    for (let filename of links) {
-        // 读取文章文件
-        const file = await fetch('posts/' + filename).then(r => r.text());
-        // 第一行作为标题
-        const firstLine = file.split('\n')[0].replace(/^#/, '').trim();
-        // Preview（取前 120 字符）
-        const preview = file.substring(0, 120).replace(/\n/g, ' ');
+    for (const filename of links) {
+        const res = await fetch('posts/' + filename);
+        const r = await res.text();
+        const firstLine = r.split('\n')[0].replace(/^#\s*/, '');
         const div = document.createElement('div');
-        div.className = 'post-item';
-        div.innerHTML = `
-            <h3><a href="posts/${filename}" target="_blank">${firstLine || filename}</a></h3>
-            <p>${preview}...</p>
-        `;
+        div.innerHTML = `<a href="posts/${filename}" target="_blank">${firstLine}</a>`;
         container.appendChild(div);
     }
 }
+// 调用加载函数
 loadPosts();
 </script>
 </body>
