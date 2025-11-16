@@ -1,69 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Posts | Ryan Cai</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; line-height: 1.6; }
-        h1 { font-size: 32px; }
-        .post-item { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
-        a { text-decoration: none; color: #0366d6; }
-        a:hover { text-decoration: underline; }
-        pre { white-space: pre-wrap; word-wrap: break-word; }
-    </style>
+<meta charset="UTF-8">
+<title>Posts | Ryan Cai</title>
+<style>
+body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; line-height: 1.6; }
+h1 { font-size: 32px; }
+.post-item { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
+a { text-decoration: none; color: #0366d6; }
+a:hover { text-decoration: underline; }
+pre { white-space: pre-wrap; word-wrap: break-word; }
+</style>
 </head>
-
 <body>
-    <h1>随笔列表 / Posts</h1>
-    <p>以下文章会自动从 <code>/posts/</code> 文件夹加载，无需你手动维护目录。</p>
-
-    <div id="post-list">Loading posts...</div>
-
-    <script>
-        // 自动列出 posts 文件夹中的所有文件
-        async function loadPosts() {
-
-            // 自动请求 posts/ 文件夹目录（Apache / Chrome 本地都会返回列表）
-            const response = await fetch('posts/');
-            const text = await response.text();
-
-            // 解析成 DOM
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(text, 'text/html');
-
-            // 找出所有文件链接
-            const links = [...htmlDoc.querySelectorAll('a')]
-                .map(a => a.getAttribute('href'))
-                .filter(name => name.endsWith('.md') || name.endsWith('.txt') || name.endsWith('.html'));
-
-            const container = document.getElementById('post-list');
-            container.innerHTML = '';
-
-            for (let filename of links) {
-
-                // 读取文章文件
-                const file = await fetch('posts/' + filename).then(r => r.text());
-
-                // 第一行作为标题
-                const firstLine = file.split('\n')[0].replace(/^#/, '').trim();
-
-                // Preview（取前 120 字符）
-                const preview = file.substring(0, 120).replace(/\n/g, ' ');
-
-                const div = document.createElement('div');
-                div.className = 'post-item';
-
-                div.innerHTML = `
-                    <h3><a href="posts/${filename}" target="_blank">${firstLine || filename}</a></h3>
-                    <p>${preview}...</p>
-                `;
-
-                container.appendChild(div);
-            }
-        }
-
-        loadPosts();
-    </script>
-
+<h1>随笔列表 / Posts</h1>
+<div id="post-list">Loading posts...</div>
+<script>
+// 自动列出 posts 文件夹中的所有文件
+async function loadPosts() {
+    // 自动请求 posts/ 文件夹目录（Apache / Chrome 本地都会返回列表）
+    const response = await fetch('posts/');
+    const text = await response.text();
+    // 解析成 DOM
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(text, 'text/html');
+    // 找出所有文件链接
+    const links = [...htmlDoc.querySelectorAll('a')]
+        .map(a => a.getAttribute('href'))
+        .filter(name => name.endsWith('.md') || name.endsWith('.txt') || name.endsWith('.html'));
+    const container = document.getElementById('post-list');
+    container.innerHTML = '';
+    for (let filename of links) {
+        // 读取文章文件
+        const file = await fetch('posts/' + filename).then(r => r.text());
+        // 第一行作为标题
+        const firstLine = file.split('\n')[0].replace(/^#/, '').trim();
+        // Preview（取前 120 字符）
+        const preview = file.substring(0, 120).replace(/\n/g, ' ');
+        const div = document.createElement('div');
+        div.className = 'post-item';
+        div.innerHTML = `
+            <h3><a href="posts/${filename}" target="_blank">${firstLine || filename}</a></h3>
+            <p>${preview}...</p>
+        `;
+        container.appendChild(div);
+    }
+}
+loadPosts();
+</script>
 </body>
 </html>
