@@ -1,159 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ryan Cai | Personal Site</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryan Cai | Tax · Automation · Personal Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #0a192f;
+      color: #e6f1ff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background: rgba(10, 25, 47, 0.9);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 999;
+    }
+    #sidebar a {
+      color: #e6f1ff;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+    #sidebar a:hover {
+      color: #64ffda;
+    }
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-            color: #222;
-            background: #fafafa;
-        }
+    /* Main content offset */
+    main {
+      margin-left: 240px;
+      padding: 40px 10% 80px;
+    }
 
-        header {
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: auto;
-        }
+    /* Sections */
+    section {
+      margin-bottom: 100px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        h1 {
-            font-size: 38px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+    /* Titles */
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #64ffda;
+    }
 
-        nav {
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
+    /* Hero section */
+    #hero h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+    #hero h2 {
+      color: #64ffda;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
 
-        nav a {
-            margin-right: 20px;
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-        }
+    /* Project cards */
+    .project-card {
+      background: #112240;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      background: #1a2d4d;
+      transform: translateY(-4px);
+    }
 
-        section {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
+    /* Underline animation */
+    .underline {
+      position: relative;
+      display: inline-block;
+    }
+    .underline::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #64ffda;
+      transition: width 0.25s;
+    }
+    .underline:hover::after {
+      width: 100%;
+    }
 
-        h2 {
-            margin-top: 40px;
-            font-size: 26px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-        }
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      color: #8892b0;
+    }
 
-        .subtitle {
-            color: #666;
-            font-size: 17px;
-            margin-top: 0;
-        }
-
-        .section-item {
-            margin-bottom: 25px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #777;
-            font-size: 14px;
-            margin-top: 60px;
-        }
-    </style>
+    /* Mobile */
+    @media (max-width: 900px) {
+      #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        justify-content: center;
+        padding: 15px;
+      }
+      main {
+        margin-left: 0;
+        padding: 25px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Ryan Cai</h1>
-    <p class="subtitle">VP of Tax Accounting · Automation & Data-focused</p>
+  <!-- Sidebar navigation -->
+  <aside id="sidebar">
+    <a href="#hero" class="underline">Home</a>
+    <a href="#about" class="underline">About</a>
+    <a href="#experience" class="underline">Experience</a>
+    <a href="#projects" class="underline">Projects</a>
+    <a href="#contact" class="underline">Contact</a>
+  </aside>
 
-    <p>Based in New York / New Jersey</p>
-    <p>Focus: Tax · Automation · CS 学习</p>
-    <p>Languages: 中文 / English</p>
+  <main>
 
-    <nav>
-        <a href="#about">ABOUT</a>
-        <a href="#experience">EXPERIENCE</a>
-        <a href="#projects">PROJECTS</a>
-        <a href="#contact">CONTACT</a>
-    </nav>
-</header>
+    <!-- HERO -->
+    <section id="hero">
+      <h2>Hi, my name is</h2>
+      <h1>Ryan Cai.</h1>
+      <p>VP of Tax Accounting · ASC 740 · Tax Automation · Data Workflow · Alteryx · Python</p>
+      <p>这里是我的个人网站，用于记录税务职业发展、美国职场的经验、以及 Tax + Tech 自动化项目。</p>
+    </section>
 
-<section id="about">
-    <h2>ABOUT · 关于我</h2>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="title">ABOUT · 关于我</div>
+      <p>你好，我是 Ryan。目前在美国金融行业从事企业所得税与税务自动化工作，主要负责 ASC 740、ETR 分析、数据处理、自动化工具构建。</p>
+      <p>之前在 Big 4（四大）做税务经理，后来转到金融机构 In-house，目前专注税务＋技术结合方向。</p>
+    </section>
 
-    <p>你好，我是xxx。目前在美国金融行业从事企业所得税与税务自动化工作，主要负责 ASC 740 · 税务会计 · 数据分析。这是我的个人成长记录、项目展示、以及分享给同样在探索中的你的一份小小参考。</p>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="title">EXPERIENCE · 经历</div>
 
-    <p>我之前在四大事务所 Big 4 和 in-house 的经历，让我对税务专业 + 技术能力的组合越来越感兴趣。这里我会慢慢整理：</p>
+      <div class="project-card">
+        <h3>VP, Tax Accounting — 大型美国金融机构</h3>
+        <p>20XX – Now · New York Metro</p>
+        <p>负责 ASC 740、ETR、OCI、数据自动化（Alteryx）、税务会计分析。</p>
+      </div>
 
-    <ul>
-        <li>税务职业发展记录（从事务所到金融机构）</li>
-        <li>Tax Tech / 自动化项目的实践思路</li>
-        <li>个人对学习、工作与生活平衡的点点理解</li>
-    </ul>
-</section>
-
-<section id="experience">
-    <h2>EXPERIENCE · 经历</h2>
-
-    <div class="section-item">
-        <h3>VP, Tax Accounting — 大型美国金融机构 · New York Metro</h3>
-        <p>20XX – Now</p>
-        <p>
-            负责法人层面税务会计与申报支持，包括税务准备、ETR 分析、以及部分自动化项目（如使用 Alteryx 处理大量数据）。
-        </p>
-    </div>
-
-    <div class="section-item">
-        <h3>Tax Manager — Big Four Accounting Firm</h3>
+      <div class="project-card">
+        <h3>Tax Manager — Big Four</h3>
         <p>20XX – 20XX</p>
-        <p>
-            服务跨国公司和金融企业的税务合规、税务规划与 ASC 740 支持，并参与管理和培训初级成员团队。
-        </p>
-    </div>
-</section>
+        <p>服务跨国公司税务，包含合规、规划、ASC 740 支持、SALT 调整等。</p>
+      </div>
+    </section>
 
-<section id="projects">
-<h2>PROJECTS · 项目 / 作品</h2>
-<a href="posts.html">查看所有随笔 / View All Posts</a>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="title">PROJECTS · 项目</div>
 
-<p>Tax + Automation 学习笔记<br>
-Tax Tech · 自我提升 · Work in progress</p>
+      <div class="project-card">
+        <h3>ASC 740 自动化框架</h3>
+        <p>构建税务准备 / ETR / SALT 自动化工作流（Alteryx + Python）。</p>
+      </div>
 
-<p>税务职业随笔（Tax Career · EN / 中文）<br>
-<a href="posts/001-taxcareer-big4-to-inhouse.html">从 Big 4 跳到 In-house 的真实体验</a>
-</p>
+      <div class="project-card">
+        <h3>税务职业随笔</h3>
+        <p><a class="underline" href="posts/001-taxcareer-big4-to-inhouse.html">从 Big 4 跳到 In-house 的心得</a></p>
+      </div>
 
-</section>
+      <div class="project-card">
+        <h3>Tax + Automation 学习笔记</h3>
+        <p>记录税务技术、自动化工具、数据分析相关内容。</p>
+      </div>
+    </section>
 
-<section id="contact">
-    <h2>CONTACT · 联系方式</h2>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="title">CONTACT · 联系方式</div>
+      <p>Email：<a class="underline" href="mailto:caith233.email@gmail.com">caith233.email@gmail.com</a></p>
+      <p>LinkedIn：<a class="underline" href="https://linkedin.com">linkedin.com/in/your-profile</a></p>
+      <p>GitHub：<a class="underline" href="https://github.com/ASC740">github.com/ASC740</a></p>
+    </section>
 
-    <p>如果你对税务、税务转型、在美国工作的路径，或 Tax + Tech 有兴趣，欢迎给我发消息。</p>
+    <footer>© Ryan Cai · All rights reserved.</footer>
 
-    <p>Email：<a href="mailto:caith233.email@gmail.com">your.email@example.com</a></p>
-    <p>LinkedIn：linkedin.com/in/your-profile</p>
-    <p>GitHub / Blog：github.com/yourname</p>
+  </main>
 
-    <p>小提示：如果你刚来税务行业，或在准备转型，可以和我简单说说你的背景、城市、遇到的困惑，我会尽我所能给出一些有用的反馈。</p>
-</section>
+  <!-- Scroll animation -->
+  <script>
+    const sections = document.querySelectorAll("section");
 
-<footer>
-    © Ryan Cai · All rights reserved.
-</footer>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
 
 </body>
 </html>
