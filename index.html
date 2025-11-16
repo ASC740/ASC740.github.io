@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ryan Cai | Tax · Automation · Personal Site</title>
+
   <style>
     body {
       margin: 0;
@@ -12,6 +13,7 @@
       color: #e6f1ff;
       line-height: 1.6;
       overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     /* Sidebar */
@@ -129,45 +131,47 @@
         padding: 25px;
       }
     }
-  /* Light Mode */
-body.light {
-  background-color: #f5f7fa;
-  color: #1a1a1a;
-}
 
-body.light #sidebar {
-  background: #e9edf2;
-}
+    /* Light Mode */
+    body.light {
+      background-color: #f5f7fa;
+      color: #1a1a1a;
+    }
 
-body.light #sidebar a {
-  color: #1c1c1c;
-}
+    body.light #sidebar {
+      background: #e9edf2;
+    }
 
-body.light .title {
-  color: #00786d;
-}
+    body.light #sidebar a {
+      color: #1c1c1c;
+    }
 
-body.light .project-card {
-  background: #ffffff;
-  border: 1px solid #e2e2e2;
-}
+    body.light .title {
+      color: #00786d;
+    }
 
-body.light .project-card:hover {
-  background: #f0f0f0;
-}
+    body.light .project-card {
+      background: #ffffff;
+      border: 1px solid #e2e2e2;
+    }
 
-body.light a.underline {
-  color: #00786d;
-}
+    body.light .project-card:hover {
+      background: #f0f0f0;
+    }
 
-body.light .underline::after {
-  background-color: #00786d;
-}  
+    body.light a.underline {
+      color: #00786d;
+    }
+
+    body.light .underline::after {
+      background-color: #00786d;
+    }
   </style>
 </head>
 
 <body>
-  
+
+<!-- Theme toggle -->
 <button id="theme-toggle" style="
     position: fixed; 
     top: 20px; 
@@ -183,110 +187,108 @@ body.light .underline::after {
   🌙
 </button>
 
-  <!-- Sidebar navigation -->
-  <aside id="sidebar">
-    <a href="#hero" class="underline">Home</a>
-    <a href="#about" class="underline">About</a>
-    <a href="#experience" class="underline">Experience</a>
-    <a href="#projects" class="underline">Projects</a>
-    <a href="#contact" class="underline">Contact</a>
-  </aside>
+<!-- Sidebar navigation -->
+<aside id="sidebar">
+  <a href="#hero" class="underline">Home</a>
+  <a href="#about" class="underline">About</a>
+  <a href="#experience" class="underline">Experience</a>
+  <a href="#projects" class="underline">Projects</a>
+  <a href="#contact" class="underline">Contact</a>
+</aside>
 
-  <main>
+<main>
 
-    <!-- HERO -->
-    <section id="hero">
-      <h2>Hi, my name is</h2>
-      <h1>Ryan Cai.</h1>
-      <p>VP of Tax Accounting · ASC 740 · Tax Automation · Data Workflow · Alteryx · Python</p>
-      <p>这里是我的个人网站，用于记录税务职业发展、美国职场的经验、以及 Tax + Tech 自动化项目。</p>
-    </section>
+  <!-- HERO -->
+  <section id="hero">
+    <h2>Hi, my name is</h2>
+    <h1>Ryan Cai.</h1>
+    <p>VP of Tax Accounting · ASC 740 · Tax Automation · Data Workflow · Alteryx · Python</p>
+    <p>这里是我的个人网站，用于记录税务职业发展、美国职场的经验、以及 Tax + Tech 自动化项目。</p>
+  </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="title">ABOUT · 关于我</div>
-      <p>你好，我是 Ryan。目前在美国金融行业从事企业所得税与税务自动化工作，主要负责 ASC 740、ETR 分析、数据处理、自动化工具构建。</p>
-      <p>之前在 Big 4（四大）做税务经理，后来转到金融机构 In-house，目前专注税务＋技术结合方向。</p>
-    </section>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="title">ABOUT · 关于我</div>
+    <p>你好，我是 Ryan。目前在美国金融行业从事企业所得税与税务自动化工作，主要负责 ASC 740、ETR 分析、数据处理、自动化工具构建。</p>
+    <p>之前在 Big 4（四大）做税务经理，后来转到金融机构 In-house，目前专注税务＋技术结合方向。</p>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <div class="title">EXPERIENCE · 经历</div>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="title">EXPERIENCE · 经历</div>
 
-      <div class="project-card">
-        <h3>VP, Tax Accounting — 大型美国金融机构</h3>
-        <p>20XX – Now · New York Metro</p>
-        <p>负责 ASC 740、ETR、OCI、数据自动化（Alteryx）、税务会计分析。</p>
-      </div>
+    <div class="project-card">
+      <h3>VP, Tax Accounting — 大型美国金融机构</h3>
+      <p>20XX – Now · New York Metro</p>
+      <p>负责 ASC 740、ETR、OCI、数据自动化（Alteryx）、税务会计分析。</p>
+    </div>
 
-      <div class="project-card">
-        <h3>Tax Manager — Big Four</h3>
-        <p>20XX – 20XX</p>
-        <p>服务跨国公司税务，包含合规、规划、ASC 740 支持、SALT 调整等。</p>
-      </div>
-    </section>
+    <div class="project-card">
+      <h3>Tax Manager — Big Four</h3>
+      <p>20XX – 20XX</p>
+      <p>服务跨国公司税务，包含合规、规划、ASC 740 支持、SALT 调整等。</p>
+    </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="title">PROJECTS · 项目</div>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="title">PROJECTS · 项目</div>
 
-      <div class="project-card">
-        <h3>ASC 740 自动化框架</h3>
-        <p>构建税务准备 / ETR / SALT 自动化工作流（Alteryx + Python）。</p>
-      </div>
+    <div class="project-card">
+      <h3>ASC 740 自动化框架</h3>
+      <p>构建税务准备 / ETR / SALT 自动化工作流（Alteryx + Python）。</p>
+    </div>
 
-      <div class="project-card">
-        <h3>税务职业随笔</h3>
-        <p><a class="underline" href="posts/001-taxcareer-big4-to-inhouse.html">从 Big 4 跳到 In-house 的心得</a></p>
-      </div>
+    <div class="project-card">
+      <h3>税务职业随笔</h3>
+      <p><a class="underline" href="posts/001-taxcareer-big4-to-inhouse.html">从 Big 4 跳到 In-house 的心得</a></p>
+    </div>
 
-      <div class="project-card">
-        <h3>Tax + Automation 学习笔记</h3>
-        <p>记录税务技术、自动化工具、数据分析相关内容。</p>
-      </div>
-    </section>
+    <div class="project-card">
+      <h3>Tax + Automation 学习笔记</h3>
+      <p>记录税务技术、自动化工具、数据分析相关内容。</p>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="title">CONTACT · 联系方式</div>
-      <p>Email：<a class="underline" href="mailto:caith233.email@gmail.com">caith233.email@gmail.com</a></p>
-      <p>LinkedIn：<a class="underline" href="https://linkedin.com">linkedin.com/in/your-profile</a></p>
-      <p>GitHub：<a class="underline" href="https://github.com/ASC740">github.com/ASC740</a></p>
-    </section>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="title">CONTACT · 联系方式</div>
+    <p>Email：<a class="underline" href="mailto:caith233.email@gmail.com">caith233.email@gmail.com</a></p>
+    <p>LinkedIn：<a class="underline" href="https://linkedin.com/">linkedin.com/in/your-profile</a></p>
+    <p>GitHub：<a class="underline" href="https://github.com/ASC740">github.com/ASC740</a></p>
+  </section>
 
-    <footer>© Ryan Cai · All rights reserved.</footer>
+  <footer>© Ryan Cai · All rights reserved.</footer>
 
-  </main>
+</main>
 
-  <!-- Scroll animation -->
-  <script>
+<!-- Theme toggle + Scroll reveal scripts -->
 <script>
-  // 读取主题
+  // Theme load
   if (localStorage.getItem("theme") === "light") {
     document.body.classList.add("light");
-    document.getElementById("theme-toggle").innerText = "☀️";
+    document.querySelector("#theme-toggle").innerText = "☀️";
   }
 
-  // 切换主题
-  document.getElementById("theme-toggle").addEventListener("click", () => {
+  // Theme toggle
+  document.querySelector("#theme-toggle").addEventListener("click", () => {
     document.body.classList.toggle("light");
     const isLight = document.body.classList.contains("light");
-    document.getElementById("theme-toggle").innerText = isLight ? "☀️" : "🌙";
+    document.querySelector("#theme-toggle").innerText = isLight ? "☀️" : "🌙";
     localStorage.setItem("theme", isLight ? "light" : "dark");
   });
+
+  // Reveal animation
+  const sections = document.querySelectorAll("section");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(sec => observer.observe(sec));
 </script>
-
-    
-    const sections = document.querySelectorAll("section");
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(sec => observer.observe(sec));
-  </script>
 
 </body>
 </html>
