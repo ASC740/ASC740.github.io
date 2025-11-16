@@ -129,10 +129,59 @@
         padding: 25px;
       }
     }
+  /* Light Mode */
+body.light {
+  background-color: #f5f7fa;
+  color: #1a1a1a;
+}
+
+body.light #sidebar {
+  background: #e9edf2;
+}
+
+body.light #sidebar a {
+  color: #1c1c1c;
+}
+
+body.light .title {
+  color: #00786d;
+}
+
+body.light .project-card {
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+}
+
+body.light .project-card:hover {
+  background: #f0f0f0;
+}
+
+body.light a.underline {
+  color: #00786d;
+}
+
+body.light .underline::after {
+  background-color: #00786d;
+}  
   </style>
 </head>
 
 <body>
+  
+<button id="theme-toggle" style="
+    position: fixed; 
+    top: 20px; 
+    right: 20px; 
+    font-size: 16px; 
+    padding: 6px 10px; 
+    cursor: pointer;
+    border-radius: 6px;
+    background: #233554;
+    color: #64ffda;
+    border: 1px solid #64ffda;
+    z-index:1000;">
+  🌙
+</button>
 
   <!-- Sidebar navigation -->
   <aside id="sidebar">
@@ -211,6 +260,23 @@
 
   <!-- Scroll animation -->
   <script>
+<script>
+  // 读取主题
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    document.getElementById("theme-toggle").innerText = "☀️";
+  }
+
+  // 切换主题
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("light");
+    const isLight = document.body.classList.contains("light");
+    document.getElementById("theme-toggle").innerText = isLight ? "☀️" : "🌙";
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  });
+</script>
+
+    
     const sections = document.querySelectorAll("section");
 
     const observer = new IntersectionObserver(entries => {
